@@ -62,7 +62,6 @@ class PHPT_Ensure_Policy
         $this->_expectations[] = $expectation;
     }
     
-    // @todo make sure this only runs once
     public function finalize()
     {
         if ($this->_finalized == true) {
