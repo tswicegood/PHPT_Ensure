@@ -1,5 +1,5 @@
 --TEST--
-When chaining method, current_value will be set to whatever was passed in at the
+When chaining method, current_argument will be set to whatever was passed in at the
 last method.
 --FILE--
 <?php
@@ -14,9 +14,9 @@ class PHPT_Ensure_Handler_Foobar
 
 $policy = new PHPT_Ensure_Policy('foobar');
 $policy->foobar('barfoo');
-assert('$policy->current_value == "barfoo"');
+assert('$policy->current_argument == "barfoo"');
 $policy->foobar('one', 'two');
-assert('$policy->current_value == array("one", "two")');
+assert('$policy->current_argument == array("one", "two")');
 
 ?>
 ===DONE===

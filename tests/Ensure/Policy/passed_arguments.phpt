@@ -1,5 +1,5 @@
 --TEST--
-All method parameters that were passed via chaining are added to a passed_values array
+All method parameters that were passed via chaining are added to a passed_arguments array
 in the order in which they were called
 --FILE--
 <?php
@@ -25,7 +25,7 @@ $expected = array(
     $random,
 );
 
-assert('$policy->passed_values == $expected');
+assert('$policy->passed_arguments == $expected');
 
 ?>
 ===DONE===

@@ -2,27 +2,27 @@
 
 class PHPT_Ensure_Policy
 {
-    private $_current_value = 0;
+    private $_current_argument = 0;
     private $_expectations = array();
-    private $_passed_values = array();
-    private $_value = '';
+    private $_passed_arguments = array();
+    private $_argument = '';
     
     public function __construct($value)
     {
-        $this->_value = $value;
+        $this->_argument = $value;
     }
     
     public function __get($key)
     {
         switch ($key) {
             case 'value' :
-                return $this->_value;
+                return $this->_argument;
             
-            case 'current_value' :
-                return $this->_passed_values[$this->_current_value];
+            case 'current_argument' :
+                return $this->_passed_arguments[$this->_current_argument];
             
-            case 'passed_values' :
-                return $this->_passed_values;
+            case 'passed_arguments' :
+                return $this->_passed_arguments;
         }
     }
     
@@ -35,11 +35,11 @@ class PHPT_Ensure_Policy
     {
         $handler_class = 'PHPT_Ensure_Handler_' . $method;
         $handler = new $handler_class();
-        $this->_current_value = count($this->_passed_values);
+        $this->_current_argument = count($this->_passed_arguments);
         if (count($arguments) > 1) {
-            $this->_passed_values[$this->_current_value] = $arguments;
+            $this->_passed_arguments[$this->_current_argument] = $arguments;
         } elseif (count($arguments) == 1) {
-            $this->_passed_values[$this->_current_value] = array_shift($arguments);
+            $this->_passed_arguments[$this->_current_argument] = array_shift($arguments);
         }
         call_user_func_array(
             array($handler, 'handle'),
