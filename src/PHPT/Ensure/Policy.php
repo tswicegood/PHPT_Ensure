@@ -55,6 +55,7 @@ class PHPT_Ensure_Policy
             array($handler, 'handle'),
             array_merge(array($this), $arguments)
         );
+        return $this;
     }
     
     public function registerExpectation($expectation)
