@@ -8,7 +8,4 @@ class PHPT_Section_ENSURE
     }
 }
 
-function ensure()
-{
-    return new PHPT_Ensure_Policy();
-}
+require dirname(__FILE__) . '/../Ensure.php';
