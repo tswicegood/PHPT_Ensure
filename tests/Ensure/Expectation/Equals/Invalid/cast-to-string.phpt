@@ -10,8 +10,9 @@ $policy = new PHPT_Ensure_Policy('foobar');
 $invalid = new PHPT_Ensure_Expectation_Equals_Invalid($policy, 'barfoo');
 
 echo $invalid, "\n";
+
 ?>
 ===DONE===
 --EXPECT--
-values [foobar] and [barfoo] are not equal
+values ['foobar'] and ['barfoo'] are not equal
 ===DONE===

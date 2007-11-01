@@ -15,8 +15,8 @@ class PHPT_Ensure_Expectation_Equals_Invalid extends Exception
     {
         return sprintf(
             "values [%s] and [%s] are not equal",
-            $this->_actual,
-            $this->_expected
+            var_export($this->_actual, true),
+            var_export($this->_expected, true)
         );
     }
 }
