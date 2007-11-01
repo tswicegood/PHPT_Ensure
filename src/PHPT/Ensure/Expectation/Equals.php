@@ -15,6 +15,6 @@ class PHPT_Ensure_Expectation_Equals implements PHPT_Ensure_Expectation
             return;
         }
         
-        return new PHPT_Ensure_Expectation_Equals_Invalid($policy, $this->_expectation);
+        return new PHPT_Ensure_Expectation_Equals_Violation($policy, $this->_expectation);
     }
 }

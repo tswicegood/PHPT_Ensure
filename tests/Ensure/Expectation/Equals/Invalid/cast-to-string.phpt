@@ -1,5 +1,5 @@
 --TEST--
-When PHPT_Ensure_Expectation_Equals_Invalid is cast to a string, it provides a plain
+When PHPT_Ensure_Expectation_Equals_Violation is cast to a string, it provides a plain
 English explaination of what happened
 --FILE--
 <?php
@@ -7,7 +7,7 @@ English explaination of what happened
 require_once dirname(__FILE__) . '/_setup.inc';
 
 $policy = new PHPT_Ensure_Policy('foobar');
-$invalid = new PHPT_Ensure_Expectation_Equals_Invalid($policy, 'barfoo');
+$invalid = new PHPT_Ensure_Expectation_Equals_Violation($policy, 'barfoo');
 
 echo $invalid, "\n";
 
