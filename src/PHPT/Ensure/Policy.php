@@ -4,12 +4,18 @@ class PHPT_Ensure_Policy
 {
     private $_current_argument = 0;
     private $_expectations = array();
+    private $_finalized = false;
     private $_passed_arguments = array();
     private $_argument = '';
     
     public function __construct($value)
     {
         $this->_argument = $value;
+    }
+    
+    public function __destruct()
+    {
+        $this->finalize();
     }
     
     public function __get($key)
@@ -52,12 +58,19 @@ class PHPT_Ensure_Policy
         $this->_expectations[] = $expectation;
     }
     
+    // @todo make sure this only runs once
     public function finalize()
     {
+        if ($this->_finalized == true) {
+            return;
+        }
+        
         foreach ($this->_expectations as $expectation)
         {
             $expectation->evaluate($this);
         }
+        
+        $this->_finalized = true;
     }
 }
 
