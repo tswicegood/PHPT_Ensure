@@ -6,8 +6,8 @@ Every call gets sent to a PHPT_Ensure_Handler
 require_once dirname(__FILE__) . '/_setup.inc';
 
 class PHPT_Ensure_Handler_Foobar {
-    public function accept($v, $arg) {
-        echo __METHOD__, " was called with ", get_class($v), " and " . $arg . "\n";
+    public function handle($v) {
+        echo __METHOD__, " was called with ", get_class($v), " and " . $v->current_value. "\n";
     }
 }
 
@@ -17,5 +17,5 @@ $policy->foobar('foo');
 ?>
 ===DONE===
 --EXPECT--
-PHPT_Ensure_Handler_Foobar::accept was called with PHPT_Ensure_Policy and foo
+PHPT_Ensure_Handler_Foobar::handle was called with PHPT_Ensure_Policy and foo
 ===DONE===

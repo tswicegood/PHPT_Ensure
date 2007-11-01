@@ -7,7 +7,7 @@ class PHPT_Ensure_Handler_Equals
         
     }
     
-    public function accept()
+    public function handle()
     {
         
     }

@@ -2,7 +2,9 @@
 
 class PHPT_Ensure_Policy
 {
+    private $_current_value = 0;
     private $_expectations = array();
+    private $_passed_values = array();
     private $_value = '';
     
     public function __construct($value)
@@ -12,8 +14,15 @@ class PHPT_Ensure_Policy
     
     public function __get($key)
     {
-        if ($key == 'value') {
-            return $this->_value;
+        switch ($key) {
+            case 'value' :
+                return $this->_value;
+            
+            case 'current_value' :
+                return $this->_passed_values[$this->_current_value];
+            
+            case 'passed_values' :
+                return $this->_passed_values;
         }
     }
     
@@ -26,8 +35,14 @@ class PHPT_Ensure_Policy
     {
         $handler_class = 'PHPT_Ensure_Handler_' . $method;
         $handler = new $handler_class();
+        $this->_current_value = count($this->_passed_values);
+        if (count($arguments) > 1) {
+            $this->_passed_values[$this->_current_value] = $arguments;
+        } elseif (count($arguments) == 1) {
+            $this->_passed_values[$this->_current_value] = array_shift($arguments);
+        }
         call_user_func_array(
-            array($handler, 'accept'),
+            array($handler, 'handle'),
             array_merge(array($this), $arguments)
         );
     }
