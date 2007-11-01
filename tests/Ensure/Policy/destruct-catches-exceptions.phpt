@@ -6,10 +6,10 @@ them and output them.
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-class PHPT_SimpleExpectation extends Exception
+class PHPT_SimpleExpectation
 {
     public function evaluate(PHPT_Ensure_Policy $policy) {
-        throw $this;
+        return $this;
     }
     public function __toString() {
         static $counter = 0;

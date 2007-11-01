@@ -1,6 +1,6 @@
 <?php
 
-class PHPT_Ensure_Expectation_Equals_Invalid extends Exception
+class PHPT_Ensure_Expectation_Equals_Invalid 
 {
     private $_actual = null;
     private $_expected = null;
