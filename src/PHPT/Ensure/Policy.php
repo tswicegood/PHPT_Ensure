@@ -15,7 +15,11 @@ class PHPT_Ensure_Policy
     
     public function __destruct()
     {
-        $this->finalize();
+        try {
+            $this->finalize();
+        } catch (PHPT_Ensure_Policy_ExceptionList $e) {
+            echo $e, "\n";
+        }
     }
     
     public function __get($key)
@@ -65,13 +69,34 @@ class PHPT_Ensure_Policy
             return;
         }
         
-        foreach ($this->_expectations as $expectation)
-        {
-            $expectation->evaluate($this);
+        $exception_stack = array();
+        
+        foreach ($this->_expectations as $expectation) {
+            try {
+                $expectation->evaluate($this);
+            } catch (Exception $e) {
+                $exception_stack[] = $e;
+            }
         }
         
         $this->_finalized = true;
+        if (!empty($exception_stack)) {
+            throw new PHPT_Ensure_Policy_ExceptionList(
+                $exception_stack
+            );
+        }
     }
 }
 
 class PHPT_Ensure_Policy_PropertyWriteException extends Exception {}
+class PHPT_Ensure_Policy_ExceptionList extends Exception {
+    public function __construct(array $exceptions)
+    {
+        $this->_exceptions = $exceptions;
+    }
+    
+    public function __toString()
+    {
+        return implode('', $this->_exceptions);
+    }
+}
