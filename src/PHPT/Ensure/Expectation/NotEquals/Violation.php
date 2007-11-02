@@ -1,6 +1,6 @@
 <?php
 
-class PHPT_Ensure_Expectation_NotEquals_Violation
+class PHPT_Ensure_Expectation_NotEquals_Violation extends PHPT_Ensure_Message
 {
     public function __construct(PHPT_Ensure_Policy $policy, $expected)
     {
@@ -9,10 +9,5 @@ class PHPT_Ensure_Expectation_NotEquals_Violation
             var_export($policy->value, true),
             var_export($expected, true)
         );
-    }
-    
-    public function __toString()
-    {
-        return $this->_message;
     }
 }
