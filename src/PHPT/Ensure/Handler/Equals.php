@@ -1,6 +1,6 @@
 <?php
 
-class PHPT_Ensure_Handler_Equals
+class PHPT_Ensure_Handler_Equals implements PHPT_Ensure_Handler
 {
     public function __construct()
     {
