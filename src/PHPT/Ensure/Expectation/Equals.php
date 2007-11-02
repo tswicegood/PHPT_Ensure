@@ -1,20 +1,9 @@
 <?php
 
-class PHPT_Ensure_Expectation_Equals implements PHPT_Ensure_Expectation
-{
-    private $_expectation = null;
-    
-    public function __construct($data)
+class PHPT_Ensure_Expectation_Equals extends PHPT_Ensure_ExpectationAbstract_SimpleExpectation
+{    
+    protected function _valid(PHPT_Ensure_Policy $policy)
     {
-        $this->_expectation = $data;
-    }
-    
-    public function evaluate(PHPT_Ensure_Policy $policy)
-    {
-        if ($policy->value == $this->_expectation) {
-            return;
-        }
-        
-        return new PHPT_Ensure_Expectation_Equals_Violation($policy, $this->_expectation);
+        return $policy->value == $this->_expectation;
     }
 }

@@ -1,18 +1,9 @@
 <?php
 
-class PHPT_Ensure_Expectation_NotEquals implements PHPT_Ensure_Expectation
-{
-    public function __construct($data)
+class PHPT_Ensure_Expectation_NotEquals extends PHPT_Ensure_ExpectationAbstract_SimpleExpectation
+{    
+    protected function _valid(PHPT_Ensure_Policy $policy)
     {
-        $this->_expectation = $data;
-    }
-    
-    public function evaluate(PHPT_Ensure_Policy $policy)
-    {
-        if ($policy->value != $this->_expectation) {
-            return;
-        }
-        
-        return new PHPT_Ensure_Expectation_NotEquals_Violation($policy, $this->_expectation);
+        return $policy->value != $this->_expectation;
     }
 }
