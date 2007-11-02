@@ -7,5 +7,3 @@ class PHPT_Section_ENSURE
         
     }
 }
-
-require dirname(__FILE__) . '/../Ensure.php';
