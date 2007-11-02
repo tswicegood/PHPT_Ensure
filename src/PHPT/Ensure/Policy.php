@@ -43,7 +43,10 @@ class PHPT_Ensure_Policy
     public function __call($method, $arguments)
     {
         $handler_class = 'PHPT_Ensure_Handler_' . $method;
-        $handler = new $handler_class();
+        if (!class_exists($handler_class, true)) {
+            $handler_class = 'PHPT_Ensure_HandlerConcrete';
+        }
+        $handler = new $handler_class($method);
         $this->_current_argument = count($this->_passed_arguments);
         if (count($arguments) > 1) {
             $this->_passed_arguments[$this->_current_argument] = $arguments;
