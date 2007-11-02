@@ -1,6 +1,7 @@
 <?php
 
-function __autoload($class) {
+function PHPT_Ensure_Test_Autoload($class) {
   @include dirname(__FILE__) . '/../src/' . str_replace('_', '/', $class) . '.php';
 }
 
+spl_autoload_register('PHPT_Ensure_Test_Autoload');
