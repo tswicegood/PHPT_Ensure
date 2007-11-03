@@ -1,6 +1,6 @@
 <?php
 
-class PHPT_Section_ENSURE implements PHPT_Section_FILEModifier
+class PHPT_Section_ENSURE implements PHPT_Section_FILEModifier, PHPT_Section
 {
     public function __construct()
     {
