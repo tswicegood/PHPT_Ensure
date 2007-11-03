@@ -1,8 +1,13 @@
 <?php
 
-abstract class PHPT_Ensure_Message
+class PHPT_Ensure_Message
 {
     protected $_message = '';
+    
+    public function __construct($message)
+    {
+        $this->_message = (string)$message;
+    }
     
     public function __toString()
     {
