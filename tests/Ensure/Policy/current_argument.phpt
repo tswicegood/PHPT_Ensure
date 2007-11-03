@@ -6,12 +6,6 @@ last method.
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-class PHPT_Ensure_Handler_Foobar
-{
-    public function handle(PHPT_Ensure_Policy $policy) {
-    }
-}
-
 $policy = new PHPT_Ensure_Policy('foobar');
 $policy->foobar('barfoo');
 assert('$policy->current_argument == "barfoo"');
@@ -20,5 +14,6 @@ assert('$policy->current_argument == array("one", "two")');
 
 ?>
 ===DONE===
---EXPECT--
+--EXPECTF--
+PHPT_Ensure_Handler_Foobar%s
 ===DONE===

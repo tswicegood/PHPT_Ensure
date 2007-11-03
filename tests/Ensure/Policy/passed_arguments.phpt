@@ -6,18 +6,15 @@ in the order in which they were called
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-class PHPT_Ensure_Handler_Foobar
-{
-    public function handle(PHPT_Ensure_Policy $policy) {
-    }
-}
-
 $policy = new PHPT_Ensure_Policy('foobar');
+// catch output from mock
+ob_start();
 $policy->foobar('foo');
 $policy->foobar('bar');
 
 $random = array(rand(100, 200), rand(200, 300));
 $policy->foobar($random);
+ob_clean();
 
 $expected = array(
     'foo',
