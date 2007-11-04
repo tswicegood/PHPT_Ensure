@@ -1,0 +1,15 @@
+Prior to v0.1
+-------------
+* Add basic Expectations:
+    * [DONE] Equals
+    * [DONE] NotEquals
+    * [DONE] Is / Identical
+    * IsNot / NotIdentical
+    * HasPattern
+    * DoesNotHavePattern
+    * IsGreaterThan
+    * IsNotGreaterThan
+    * IsLesserThan
+    * IsNotLesserThan
+    * IsBetween
+    * Type / IsA / IsAn
