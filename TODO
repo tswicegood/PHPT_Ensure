@@ -15,3 +15,16 @@ Prior to v0.1
     * NotBetween
     * Type / A / An
     * NotType / NotA / NotAn
+
+Floating tasks
+--------------
+* Add Either/Neither expectations:
+    ensure('foo')->either(
+        array('type', 'string'),
+        array('equals', 'foo')
+    );
+    ensure('foo')->neither(
+        array('type', 'int'),
+        array('equals', 'bar)
+    );
+
