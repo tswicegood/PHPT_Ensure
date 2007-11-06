@@ -9,8 +9,8 @@ Prior to v0.1
     * [DONE] NoPattern
     * [DONE] GreaterThan
     * [DONE] NotGreaterThan
-    * LesserThan
-    * NotLesserThan
+    * [DONE] LesserThan
+    * [DONE] NotLesserThan
     * GreaterThanOrEqual / NotGreaterThanOrEqual
     * LesserThanOrEqual / NotLesserThanOrEqual
     * Between
