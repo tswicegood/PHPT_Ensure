@@ -7,9 +7,9 @@ Prior to v0.1
     * [DONE] IsNot / NotIdentical
     * HasPattern
     * DoesNotHavePattern
-    * IsGreaterThan
-    * IsNotGreaterThan
-    * IsLesserThan
-    * IsNotLesserThan
-    * IsBetween
+    * GreaterThan
+    * NotGreaterThan
+    * LesserThan
+    * NotLesserThan
+    * Between
     * Type / IsA / IsAn
