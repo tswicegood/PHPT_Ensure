@@ -30,9 +30,9 @@ Floating tasks
         'equals', 'bar
     );
     ensure('joeuser')->either(
-        'canLogin', 'password',
-        'canRegister, array('password', array('first_name' => 'Joe', 'last_name' => 'User'))
+        'canLogin', 'some password',
+        'canRegister, array('some password', array('first_name' => 'Joe', 'last_name' => 'User'))
     ); // is like:
-    ensure('joeuser')->canLogin('password') or
-    ensure('joeuser')->canRegister('password', array('first_name' => 'Joe', 'last_name' => 'User'))
+    ensure('joeuser')->canLogin('some password') or
+    ensure('joeuser')->canRegister('some password', array('first_name' => 'Joe', 'last_name' => 'User'))
 
