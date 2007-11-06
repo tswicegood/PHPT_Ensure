@@ -12,4 +12,6 @@ Prior to v0.1
     * LesserThan
     * NotLesserThan
     * Between
+    * NotBetween
     * Type / A / An
+    * NotType / NotA / NotAn
