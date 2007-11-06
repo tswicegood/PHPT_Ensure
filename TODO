@@ -12,7 +12,7 @@ Prior to v0.1
     * [DONE] LesserThan
     * [DONE] NotLesserThan
     * [DONE] GreaterThanOrEqual / NotGreaterThanOrEqual
-    * LesserThanOrEqual / NotLesserThanOrEqual
+    * [DONE] LesserThanOrEqual / NotLesserThanOrEqual
     * Between
     * NotBetween
     * Type / A / An
