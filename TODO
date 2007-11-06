@@ -35,4 +35,18 @@ Floating tasks
     ); // is like:
     ensure('joeuser')->canLogin('some password') or
     ensure('joeuser')->canRegister('some password', array('first_name' => 'Joe', 'last_name' => 'User'))
-
+* Explore adding modifiers instead of either/niether syntax:
+    ensure('foo')->type('integer')->or->equals('foo');
+    ensure('foo')
+        ->type('integer')
+        ->or
+        ->type('string')->and->equals('foo');
+    
+    All properties would be Ensure_ExpectationModifiers that the Policy would notify when new
+    expectations arrive.  Another use case would be:
+    ensure('foo')
+        ->any
+            ->type('int')
+            ->type('boolean')
+            ->type('string');
+    NOTE: all or/and's would have to be "or_/and_" unless keyword restrictions are removed in 5.3
