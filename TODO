@@ -4,7 +4,7 @@ Prior to v0.1
     * [DONE] Equals
     * [DONE] NotEquals
     * [DONE] Is / Identical
-    * IsNot / NotIdentical
+    * [DONE] IsNot / NotIdentical
     * HasPattern
     * DoesNotHavePattern
     * IsGreaterThan
