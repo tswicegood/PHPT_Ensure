@@ -8,9 +8,19 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleViolation
     {
         $this->_message = new PHPT_Ensure_Message(sprintf(
             $this->_message,
-            var_export($policy->value, true),
-            var_export($expected, true)
+            $this->_dumpPolicy($policy),
+            $this->_dumpExpectation($expected)
         ));
+    }
+    
+    protected function _dumpPolicy(PHPT_Ensure_Policy $policy)
+    {
+        return var_export($policy->value, true);
+    }
+    
+    protected function _dumpExpectation($expectation)
+    {
+        return var_export($expectation, true);
     }
     
     public function __toString()
