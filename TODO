@@ -6,7 +6,7 @@ Prior to v0.1
     * [DONE] Is / Identical
     * [DONE] IsNot / NotIdentical
     * [DONE] Pattern
-    * NoPattern
+    * [DONE] NoPattern
     * GreaterThan
     * NotGreaterThan
     * LesserThan
