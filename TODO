@@ -11,6 +11,8 @@ Prior to v0.1
     * [DONE] NotGreaterThan
     * LesserThan
     * NotLesserThan
+    * GreaterThanOrEqual / NotGreaterThanOrEqual
+    * LesserThanOrEqual / NotLesserThanOrEqual
     * Between
     * NotBetween
     * Type / A / An
@@ -20,11 +22,17 @@ Floating tasks
 --------------
 * Add Either/Neither expectations:
     ensure('foo')->either(
-        array('type', 'string'),
-        array('equals', 'foo')
+        'type', 'string',
+        'equals', 'foo'
     );
     ensure('foo')->neither(
-        array('type', 'int'),
-        array('equals', 'bar)
+        'type', 'int',
+        'equals', 'bar
     );
+    ensure('joeuser')->either(
+        'canLogin', 'password',
+        'canRegister, array('password', array('first_name' => 'Joe', 'last_name' => 'User'))
+    ); // is like:
+    ensure('joeuser')->canLogin('password') or
+    ensure('joeuser')->canRegister('password', array('first_name' => 'Joe', 'last_name' => 'User'))
 
