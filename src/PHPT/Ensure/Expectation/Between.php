@@ -17,17 +17,25 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 	{ 
 		$greaterThanOrEqual = new PHPT_Ensure_Expectation_GreaterThanOrEqual($this->_lower);
 		if (!is_null($greaterThanOrEqual->evaluate($policy))) {
-			return new PHPT_Ensure_Expectation_Between_Violation();
+			return $this->_violation($policy);
 		}
 		$lesserThanOrEqual = new PHPT_Ensure_Expectation_LesserThanOrEqual($this->_upper);
 		if (!is_null($lesserThanOrEqual->evaluate($policy))) {
-			return new PHPT_Ensure_Expectation_Between_Violation();
+			return $this->_violation($policy);
 		}
+	}
+
+	private function _violation(PHPT_Ensure_Policy $policy)
+	{
+		return new PHPT_Ensure_Expectation_Between_Violation(
+			$policy,
+			array(
+				$this->_lower,
+				$this->_upper,
+			)
+		);
 	}
 }
 
-class PHPT_Ensure_Expectation_Between_Violation
-{
 
-}
 
