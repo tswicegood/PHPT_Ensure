@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @todo refactor this into a common ExpectationAbstract_Sequential
+ * 		 abstract and use it for Between and NotBetween
+ */
 class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 {
 	private $_lower = null;
