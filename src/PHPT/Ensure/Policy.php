@@ -32,6 +32,9 @@ class PHPT_Ensure_Policy
             
             case 'passed_arguments' :
                 return $this->_passed_arguments;
+
+            case 'expectations' :
+                return $this->_expectations;
         }
     }
     
@@ -70,24 +73,42 @@ class PHPT_Ensure_Policy
         if ($this->_processed == true) {
             return;
         }
+
+        $processor = new PHPT_Ensure_Policy_Processor();
+        $return = $processor->process($this);
         
-        $exception_stack = array();
+        $this->_processed = true;
+        return $return;
+
+    }
+}
+
+class PHPT_Ensure_Policy_Processor
+{
+    public function __construct()
+    {
+
+    }
+
+    public function process(PHPT_Ensure_Policy $policy)
+    {
+        $violation_stack = array();
         
-        foreach ($this->_expectations as $expectation) {
-            $result = $expectation->evaluate($this);
+        foreach ($policy->expectations as $expectation) {
+            $result = $expectation->evaluate($policy);
             if (!is_null($result)) {
-                $exception_stack[] = $result;
+                $violation_stack[] = $result;
             }
         }
         
-        $this->_processed = true;
-        if (!empty($exception_stack)) {
+        if (!empty($violation_stack)) {
             return new PHPT_Ensure_Policy_ViolationList(
-                $exception_stack
+                $violation_stack
             );
         }
     }
 }
+
 
 class PHPT_Ensure_Policy_PropertyWriteException extends Exception {}
 class PHPT_Ensure_Policy_ViolationList {
