@@ -1,5 +1,5 @@
 --TEST--
-If any exceptions are thrown while __destruct() has called finalize, it will catch
+If any exceptions are thrown while __destruct() has called process, it will catch
 them and output them.
 --ARGS--
 --FILE--

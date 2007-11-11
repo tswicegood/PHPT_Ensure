@@ -1,5 +1,5 @@
 --TEST--
-When a Policy object is destroyed, it calls finalize()
+When a Policy object is destroyed, it calls process()
 --FILE--
 <?php
 

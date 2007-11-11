@@ -4,7 +4,7 @@ class PHPT_Ensure_Policy
 {
     private $_current_argument = 0;
     private $_expectations = array();
-    private $_finalized = false;
+    private $_processed = false;
     private $_passed_arguments = array();
     private $_argument = '';
     
@@ -15,7 +15,7 @@ class PHPT_Ensure_Policy
     
     public function __destruct()
     {
-        $result = $this->finalize();
+        $result = $this->process();
         if (!is_null($result)) {
             echo $result, "\n";
         }
@@ -65,9 +65,9 @@ class PHPT_Ensure_Policy
         $this->_expectations[] = $expectation;
     }
     
-    public function finalize()
+    public function process()
     {
-        if ($this->_finalized == true) {
+        if ($this->_processed == true) {
             return;
         }
         
@@ -80,7 +80,7 @@ class PHPT_Ensure_Policy
             }
         }
         
-        $this->_finalized = true;
+        $this->_processed = true;
         if (!empty($exception_stack)) {
             return new PHPT_Ensure_Policy_ViolationList(
                 $exception_stack

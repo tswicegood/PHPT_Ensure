@@ -1,6 +1,6 @@
 --TEST--
 Any PHPT_Ensure_Expectation objects that have been registered will be called in the
-order they were registered when finalize is called
+order they were registered when process is called
 --ARGS--
 --FILE--
 <?php
@@ -11,7 +11,7 @@ $policy = new PHPT_Ensure_Policy('foobar');
 $policy->registerExpectation(new PHPT_SimpleExpectation());
 $policy->registerExpectation(new PHPT_SimpleExpectation());
 
-$policy->finalize();
+$policy->process();
 
 ?>
 ===DONE===
