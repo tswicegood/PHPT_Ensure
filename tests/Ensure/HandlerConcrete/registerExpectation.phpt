@@ -16,6 +16,11 @@ class PHPT_Ensure_Expectation_Foobar implements PHPT_Ensure_Expectation {
     {
         
     }
+
+    public function getDescription()
+    {
+
+    }
 }
 
 $handler = new PHPT_Ensure_HandlerConcrete('foobar');

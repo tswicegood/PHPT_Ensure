@@ -8,6 +8,7 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 {
 	private $_lower = null;
 	private $_upper = null;
+    private $_status = false;
 
     public function __construct($value)
 	{
@@ -17,17 +18,35 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 		$this->_upper = array_shift($value);
 	}
 
+    public function __get($key)
+    {
+        if ($key == 'status') {
+            return $this->_status;
+        }
+    }
+
     public function evaluate(PHPT_Ensure_Policy $policy) 
 	{ 
 		$greaterThanOrEqual = new PHPT_Ensure_Expectation_GreaterThanOrEqual($this->_lower);
-		if (!is_null($greaterThanOrEqual->evaluate($policy))) {
-			return $this->_violation($policy);
+        $greaterThanOrEqual->evaluate($policy);
+        if ($greaterThanOrEqual->status === false) {
+            $this->_status = false;
+            return;
 		}
 		$lesserThanOrEqual = new PHPT_Ensure_Expectation_LesserThanOrEqual($this->_upper);
-		if (!is_null($lesserThanOrEqual->evaluate($policy))) {
-			return $this->_violation($policy);
+        $lesserThanOrEqual->evaluate($policy);
+		if ($lesserThanOrEqual->status === false) {
+            $this->_status = false;
+			return;
 		}
+
+        $this->_status = true;
 	}
+
+    public function getDescription()
+    {
+
+    }
 
 	private function _violation(PHPT_Ensure_Policy $policy)
 	{

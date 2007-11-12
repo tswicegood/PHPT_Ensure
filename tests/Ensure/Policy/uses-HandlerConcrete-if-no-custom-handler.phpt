@@ -14,6 +14,8 @@ class PHPT_Ensure_Expectation_WithoutHandler implements PHPT_Ensure_Expectation 
     public function evaluate(PHPT_Ensure_Policy $policy) {
         echo __METHOD__, " was called\n";
     }
+
+    public function getDescription() { }
 }
 
 class_exists('PHPT_Ensure', true);

@@ -4,6 +4,7 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
 {
 	private $_lower = null;
 	private $_upper = null;
+    private $_status = false;
 
     public function __construct($value)
 	{
@@ -13,18 +14,21 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
 		$this->_upper = array_shift($value);
 	}
 
+    public function __get($key)
+    {
+        if ($key == 'status') {
+            return $this->_status;
+        }
+    }
+
     public function evaluate(PHPT_Ensure_Policy $policy) 
 	{
-		if (!($this->_lower >= $policy->value || $this->_upper <= $policy->value)) {
-			return new PHPT_Ensure_Expectation_NotBetween_Violation(
-				$policy,
-				array(
-					$this->_lower,
-					$this->_upper,
-				)
-			);
-		}
-		return null;
-	}
+		$this->_status = (bool)($this->_lower >= $policy->value || $this->_upper <= $policy->value);
+    }
+
+    public function getDescription()
+    {
+
+    }
 }
 

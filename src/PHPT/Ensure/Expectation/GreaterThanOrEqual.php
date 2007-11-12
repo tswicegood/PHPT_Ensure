@@ -18,9 +18,10 @@ class PHPT_Ensure_Expectation_GreaterThanOrEqual extends PHPT_Ensure_Expectation
         
         foreach ($expectations as $expectation_name) {
             $expectation = new $expectation_name($this->_expectation);
-            $result = $expectation->evaluate($policy);
-            if (is_null($result)) {
+            $expectation->evaluate($policy);
+            if ($expectation->status === true) {
                 $passed = true;
+                break;
             }
         }
         return $passed;

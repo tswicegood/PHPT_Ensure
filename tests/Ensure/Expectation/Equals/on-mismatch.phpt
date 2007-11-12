@@ -1,5 +1,6 @@
 --TEST--
-evaluate() throws an exception if Policy->value is not equal
+When evaluate() is called with a PHPT_Ensure_Policy that has a value not equal to
+this expectation, status will be falsee.
 --FILE--
 <?php
 
@@ -7,10 +8,9 @@ require_once dirname(__FILE__) . '/_setup.inc';
 
 $policy = new PHPT_Ensure_Policy('foobar');
 $expectation = new PHPT_Ensure_Expectation_Equals('barfoo');
+$expectation->evaluate($policy);
 
-$result = $expectation->evaluate($policy);
-assert('$result instanceof PHPT_Ensure_Expectation_Equals_Violation');
-
+assert('$expectation->status == false');
 ?>
 ===DONE===
 --EXPECT--

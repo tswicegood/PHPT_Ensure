@@ -1,13 +1,14 @@
 --TEST--
-On a mismatch, evaluate() returns PHPT_Ensure_Expectation_NoPattern_Violation
+On an unsuccessful evaluate(), the status property will equal false
 --FILE--
 <?php
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-$NoPattern = new PHPT_Ensure_Expectation_NoPattern('/\d/');
+$expectation = new PHPT_Ensure_Expectation_NoPattern('/\d/');
 $policy = new PHPT_Ensure_Policy('Contains numbers 123 and strings "string"');
-assert('$NoPattern->evaluate($policy) instanceof PHPT_Ensure_Expectation_NoPattern_Violation');
+$expectation->evaluate($policy);
+assert('$expectation->status === false');
 
 ?>
 ===DONE===

@@ -18,9 +18,10 @@ class PHPT_Ensure_Expectation_LesserThanOrEqual extends PHPT_Ensure_ExpectationA
         
         foreach ($expectations as $expectation_name) {
             $expectation = new $expectation_name($this->_expectation);
-            $result = $expectation->evaluate($policy);
-            if (is_null($result)) {
+            $expectation->evaluate($policy);
+            if ($expectation->status) {
                 $passed = true;
+                break;
             }
         }
         return $passed;

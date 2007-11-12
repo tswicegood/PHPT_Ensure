@@ -5,9 +5,10 @@ evalutate() should do nothing on a success
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-$pattern = new PHPT_Ensure_Expectation_Between(array(100, 200));
+$expectation = new PHPT_Ensure_Expectation_Between(array(100, 200));
 $policy = new PHPT_Ensure_Policy(rand(100, 200));
-assert('is_null($pattern->evaluate($policy))');
+$expectation->evaluate($policy);
+assert('$expectation->status == true');
 
 ?>
 ===DONE===

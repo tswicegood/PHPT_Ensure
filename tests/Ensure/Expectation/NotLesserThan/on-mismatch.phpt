@@ -1,13 +1,14 @@
 --TEST--
-On a mismatch, evaluate() returns PHPT_Ensure_Expectation_NotLesserThan_Violation
+On an unsuccessful evaluate(), the status property will equal false
 --FILE--
 <?php
 
 require_once dirname(__FILE__) . '/_setup.inc';
 
-$NotLesserThan = new PHPT_Ensure_Expectation_NotLesserThan(100);
+$expectation = new PHPT_Ensure_Expectation_NotLesserThan(100);
 $policy = new PHPT_Ensure_Policy(99);
-assert('$NotLesserThan->evaluate($policy) instanceof PHPT_Ensure_Expectation_NotLesserThan_Violation');
+$expectation->evaluate($policy);
+assert('$expectation->status === false');
 
 ?>
 ===DONE===
