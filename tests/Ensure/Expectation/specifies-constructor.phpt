@@ -13,7 +13,7 @@ assert('$method->getNumberOfParameters() == 1');
 
 $param = array_shift($method->getParameters());
 assert('$param->getName() == "value"');
-assert('$param->isOptional() === false');
+assert('$param->isOptional() === true');
 
 ?>
 ===DONE===

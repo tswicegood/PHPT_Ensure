@@ -87,7 +87,7 @@ class PHPT_Ensure_Policy_Processor
 {
     public function __construct()
     {
-
+        $this->reporter = new PHPT_Ensure_Reporter_Default();
     }
 
     public function process(PHPT_Ensure_Policy $policy)
@@ -95,17 +95,29 @@ class PHPT_Ensure_Policy_Processor
         $violation_stack = array();
         
         foreach ($policy->expectations as $expectation) {
-            $result = $expectation->evaluate($policy);
-            if (!is_null($result)) {
-                $violation_stack[] = $result;
-            }
+            $expectation->evaluate($policy);
+            $this->reporter->handle($policy, $expectation);
         }
-        
-        if (!empty($violation_stack)) {
-            return new PHPT_Ensure_Policy_ViolationList(
-                $violation_stack
-            );
+    }
+}
+
+class PHPT_Ensure_Reporter_Default
+{
+    public function __construct()
+    {
+
+    }
+
+    public function handle(PHPT_Ensure_Policy $policy, PHPT_Ensure_Expectation $expectation)
+    {
+        if ($expectation->status) {
+            return;
         }
+        echo $expectation->getDescription(), "\n",
+             "Expected:\n",
+             "    ", var_export($expectation->expectation, true), "\n",
+             "Actual:\n",
+             "    ", var_export($policy->value, true), "\n";
     }
 }
 

@@ -7,8 +7,11 @@ fall back.
 require_once dirname(__FILE__) . '/_setup.inc';
 
 class PHPT_Ensure_Expectation_WithoutHandler implements PHPT_Ensure_Expectation {
-    public function __construct($data) {
-        echo __CLASS__, " was instantiated with {$data}\n";
+    public $expectation = '';
+    public $status = true;
+
+    public function __construct($value = null) {
+        echo __CLASS__, " was instantiated with {$value}\n";
     }
     
     public function evaluate(PHPT_Ensure_Policy $policy) {

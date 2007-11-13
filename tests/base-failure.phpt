@@ -12,4 +12,8 @@ ensure('foobar')->equals('barfoo');
 
 ?>
 --EXPECT--
-values ['foobar'] and ['barfoo'] are not equal
+values were expected to be equal
+Expected:
+    'barfoo'
+Actual:
+    'foobar'

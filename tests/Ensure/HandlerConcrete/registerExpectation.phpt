@@ -8,7 +8,9 @@ require_once dirname(__FILE__) . '/_setup.inc';
 require_once dirname(__FILE__) . '/../Handler/_mock-policy.inc';
 
 class PHPT_Ensure_Expectation_Foobar implements PHPT_Ensure_Expectation {
-    public function __construct($data) {
+    public $expectation = '';
+    public $status = true;
+    public function __construct($value = null) {
         echo __CLASS__, " was instantiated\n";
     }
     

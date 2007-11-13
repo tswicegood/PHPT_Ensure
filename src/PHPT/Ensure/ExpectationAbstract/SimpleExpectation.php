@@ -3,12 +3,13 @@
 abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT_Ensure_Expectation
 {
     protected $_expectation = null;
+    protected $_message = null;
     protected $_status = false;
     protected $_violation = 'PHPT_Ensure_Expectation_%s_Violation';
     
-    public function __construct($data)
+    public function __construct($value = null)
     {
-        $this->_expectation = $data;
+        $this->_expectation = $value;
         $this->_violation = sprintf(
             $this->_violation,
             array_pop(explode('_', get_class($this)))
@@ -17,8 +18,11 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
     
     public function __get($key)
     {
-        if ($key == 'status') {
-            return $this->_status;
+        switch ($key) {
+            case 'status' :
+                return $this->_status;
+            case 'expectation' :
+                return $this->_expectation;
         }
     }
 
@@ -29,7 +33,7 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
 
     public function getDescription()
     {
-
+        return $this->_message;
     }
     
     abstract protected function _valid(PHPT_Ensure_Policy $policy);

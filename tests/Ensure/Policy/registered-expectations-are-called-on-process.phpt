@@ -8,8 +8,8 @@ order they were registered when process is called
 require_once dirname(__FILE__) . '/_setup.inc';
 
 $policy = new PHPT_Ensure_Policy('foobar');
-$policy->registerExpectation(new PHPT_SimpleExpectation());
-$policy->registerExpectation(new PHPT_SimpleExpectation());
+$policy->registerExpectation(new PHPT_SimpleExpectation(''));
+$policy->registerExpectation(new PHPT_SimpleExpectation(''));
 
 $policy->process();
 

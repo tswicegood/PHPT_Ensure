@@ -10,7 +10,7 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 	private $_upper = null;
     private $_status = false;
 
-    public function __construct($value)
+    public function __construct($value = null)
 	{
 		$value = (array)$value;
 		sort($value);
