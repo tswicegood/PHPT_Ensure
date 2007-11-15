@@ -123,14 +123,4 @@ class PHPT_Ensure_Reporter_Default
 
 
 class PHPT_Ensure_Policy_PropertyWriteException extends Exception {}
-class PHPT_Ensure_Policy_ViolationList {
-    public function __construct(array $exceptions)
-    {
-        $this->_exceptions = $exceptions;
-    }
-    
-    public function __toString()
-    {
-        return implode('', $this->_exceptions);
-    }
-}
+
