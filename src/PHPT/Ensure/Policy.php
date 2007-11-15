@@ -45,11 +45,7 @@ class PHPT_Ensure_Policy
     
     public function __call($method, $arguments)
     {
-        $handler_class = 'PHPT_Ensure_Handler_' . $method;
-        if (!class_exists($handler_class, true)) {
-            $handler_class = 'PHPT_Ensure_HandlerConcrete';
-        }
-        $handler = new $handler_class($method);
+        $handler = $this->_newHandlerFactory($method);
         $this->_current_argument = count($this->_passed_arguments);
         if (count($arguments) > 1) {
             $this->_passed_arguments[$this->_current_argument] = $arguments;
@@ -80,6 +76,15 @@ class PHPT_Ensure_Policy
         $this->_processed = true;
         return $return;
 
+    }
+
+    private function _newHandlerFactory($type)
+    {
+        $handler_class = 'PHPT_Ensure_Handler_' . $type;
+        if (!class_exists($handler_class, true)) {
+            $handler_class = 'PHPT_Ensure_HandlerConcrete';
+        }
+        return new $handler_class($type);
     }
 }
 
