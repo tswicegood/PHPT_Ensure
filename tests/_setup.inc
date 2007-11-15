@@ -5,3 +5,6 @@ function PHPT_Ensure_Test_Autoload($class) {
 }
 
 spl_autoload_register('PHPT_Ensure_Test_Autoload');
+
+require_once dirname(__FILE__) . '/../../../Core/trunk/src/PHPT/Framework.php';
+
