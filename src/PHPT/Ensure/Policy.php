@@ -46,12 +46,7 @@ class PHPT_Ensure_Policy
     public function __call($method, $arguments)
     {
         $handler = $this->_newHandlerFactory($method);
-        $this->_current_argument = count($this->_passed_arguments);
-        if (count($arguments) > 1) {
-            $this->_passed_arguments[$this->_current_argument] = $arguments;
-        } elseif (count($arguments) == 1) {
-            $this->_passed_arguments[$this->_current_argument] = array_shift($arguments);
-        }
+        $this->_storeArguments($arguments);
         call_user_func_array(
             array($handler, 'handle'),
             array_merge(array($this), $arguments)
@@ -85,6 +80,16 @@ class PHPT_Ensure_Policy
             $handler_class = 'PHPT_Ensure_HandlerConcrete';
         }
         return new $handler_class($type);
+    }
+
+    private function _storeArguments($arguments)
+    {
+        $this->_current_argument = count($this->_passed_arguments);
+        if (count($arguments) > 1) {
+            $this->_passed_arguments[$this->_current_argument] = $arguments;
+        } elseif (count($arguments) == 1) {
+            $this->_passed_arguments[$this->_current_argument] = array_shift($arguments);
+        }
     }
 }
 
