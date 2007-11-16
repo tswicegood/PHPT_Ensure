@@ -12,7 +12,7 @@ ensure('foobar')->equals('barfoo');
 
 ?>
 --EXPECT--
-values are expected to be equal 'barfoo'
+value is expected to be equal 'barfoo'
 Expected:
     'barfoo'
 Actual:
