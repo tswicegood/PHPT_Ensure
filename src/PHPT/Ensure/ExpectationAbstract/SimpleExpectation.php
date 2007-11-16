@@ -14,6 +14,10 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
             $this->_violation,
             array_pop(explode('_', get_class($this)))
         );
+        
+        if (!empty($this->_message)) {
+            $this->_message = sprintf($this->_message, var_export($value, true));
+        }
     }
     
     public function __get($key)
