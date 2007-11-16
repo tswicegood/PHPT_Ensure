@@ -12,8 +12,6 @@ ensure('foobar')->equals('barfoo');
 
 ?>
 --EXPECT--
-value is expected to be equal 'barfoo'
-Expected:
-    'barfoo'
-Actual:
-    'foobar'
+value is expected to be equal to 'barfoo'
+001- 'barfoo'
+001+ 'foobar'

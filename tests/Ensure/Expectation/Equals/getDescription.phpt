@@ -12,6 +12,6 @@ echo $expectation->getDescription(), "\n";
 ?>
 ===DONE===
 --EXPECT--
-value is expected to be equal 'foobar'
+value is expected to be equal to 'foobar'
 ===DONE===
 
