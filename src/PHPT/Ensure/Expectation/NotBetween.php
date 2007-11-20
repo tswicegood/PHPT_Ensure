@@ -28,7 +28,7 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
 
     public function getDescription()
     {
-
+        return sprintf('value is not expected to be between %d and %d', $this->_lower, $this->_upper);
     }
 }
 

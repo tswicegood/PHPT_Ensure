@@ -45,7 +45,7 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 
     public function getDescription()
     {
-
+        return sprintf('value is expected to be between %d and %d', $this->_lower, $this->_upper);
     }
 
 	private function _violation(PHPT_Ensure_Policy $policy)
