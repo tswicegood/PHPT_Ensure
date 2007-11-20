@@ -12,12 +12,11 @@ class PHPT_Ensure_Reporter_Default
         if ($expectation->status) {
             return;
         }
-        echo $expectation->getDescription(), "\n";
-        
-        echo new PHPT_Util_Diff(
-            var_export($expectation->expectation, true),
-            var_export($policy->value, true)
-        ), "\n";
+        echo $expectation->getDescription(), "\n",
+             "Expected:\n",
+             "    ", var_export($expectation->expectation, true), "\n",
+             "Actual:\n",
+             "    ", var_export($policy->value, true), "\n";
     }
 }
 
