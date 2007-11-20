@@ -15,9 +15,13 @@ assert('$file->contents == "foobar"');
 $ensure = new PHPT_Section_ENSURE();
 $ensure->modifyFile($file);
 
-assert('$file->contents == "<?php class_exists(\'PHPT_Ensure\', true); ?>foobar"');
+echo $file->contents, "\n";
 
 ?>
 ===DONE===
---EXPECT--
+--EXPECTF--
+<?php
+require_once '%sPHPT/Framework.php';
+class_exists('PHPT_Ensure', true);
+?>foobar
 ===DONE===
