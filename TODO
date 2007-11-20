@@ -15,13 +15,20 @@ Prior to v0.1
     * [DONE] LesserThanOrEqual / NotLesserThanOrEqual
     * [DONE] Between
     * [DONE] NotBetween
-    * Type / A / An
-    * NotType / NotA / NotAn
-* Refactor the way notifications are printed.
-    * Add Ensure_Policy_Verifier($reporter) to handle verification and reporting
-    * Change ensure($value) to ensure($value, PHPT_Ensure_Reporter $reporter = null)
-    * If ensure('foo', null), use PHPT_Ensure_Registry()->opts['ensure_reporter'] to determine
-      the default
+* [DONE] Refactor the way notifications are printed.
+* [DONE] Add messages to all expectations
+
+Prior to v0.2
+-------------
+* Clean up output messages
+    * Add full diff capabilities when an expectation fails
+    * Create intelligent "diff" of an array such as:
+        - array[0]['foo'] => 'bar' was not expected
+        - array[0][1] is not equal to 'foobar'
+* Add Type / A / An Expectation
+* Add NotType / NotA / NotAn Expectation
+* Clean up pattern dumping and remove escape values
+
 
 Floating tasks
 --------------
