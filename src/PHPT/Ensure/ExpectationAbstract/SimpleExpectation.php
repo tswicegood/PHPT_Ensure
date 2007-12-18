@@ -5,16 +5,11 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
     protected $_expectation = null;
     protected $_message = null;
     protected $_status = false;
-    protected $_violation = 'PHPT_Ensure_Expectation_%s_Violation';
     
     public function __construct($value = null)
     {
         $this->_expectation = $value;
-        $this->_violation = sprintf(
-            $this->_violation,
-            array_pop(explode('_', get_class($this)))
-        );
-        
+       
         if (!empty($this->_message)) {
             $this->_message = sprintf($this->_message, var_export($value, true));
         }
