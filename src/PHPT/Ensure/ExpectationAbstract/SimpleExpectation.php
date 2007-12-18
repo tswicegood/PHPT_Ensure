@@ -8,7 +8,9 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
     
     public function __construct($value = null)
     {
-        $this->_expectation = $value;
+        if (!is_null($value)) {
+            $this->_expectation = $value;
+        }
        
         if (!empty($this->_message)) {
             $this->_message = sprintf($this->_message, var_export($value, true));
