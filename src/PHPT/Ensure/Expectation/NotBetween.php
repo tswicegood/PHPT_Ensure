@@ -28,5 +28,10 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
     {
         return $this->_status;
     }
+
+    public function getExpectation()
+    {
+        return $this->_expectation;
+    }
 }
 

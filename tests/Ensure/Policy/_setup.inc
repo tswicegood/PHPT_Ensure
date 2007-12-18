@@ -22,6 +22,9 @@ class PHPT_SimpleExpectation implements PHPT_Ensure_Expectation
     public function getStatus() { 
         return $this->status;
     }
+    public function getExpectation() {
+        return $this->expectation;
+    }
 }
 
 class PHPT_Ensure_Handler_Foobar {

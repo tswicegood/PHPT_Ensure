@@ -46,6 +46,11 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
         return $this->_status;
     }
 
+    public function getExpectation()
+    {
+        return $this->_expectation;
+    }
+
 	private function _violation(PHPT_Ensure_Policy $policy)
 	{
 		return new PHPT_Ensure_Expectation_Between_Violation(

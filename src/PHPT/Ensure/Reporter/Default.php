@@ -14,7 +14,7 @@ class PHPT_Ensure_Reporter_Default
         }
         echo $expectation->getDescription(), "\n",
              "Expected:\n",
-             "    ", var_export($expectation->expectation, true), "\n",
+             "    ", var_export($expectation->getExpectation(), true), "\n",
              "Actual:\n",
              "    ", var_export($policy->value, true), "\n";
     }

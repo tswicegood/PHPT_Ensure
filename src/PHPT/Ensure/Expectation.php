@@ -15,4 +15,5 @@ interface PHPT_Ensure_Expectation
     public function getDescription();
 
     public function getStatus();
+    public function getExpectation();
 }

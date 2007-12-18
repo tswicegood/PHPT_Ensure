@@ -15,14 +15,6 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
         }
     }
     
-    public function __get($key)
-    {
-        switch ($key) {
-            case 'expectation' :
-                return $this->_expectation;
-        }
-    }
-
     public function evaluate(PHPT_Ensure_Policy $policy)
     {
         $this->_status = $this->_valid($policy);
@@ -36,6 +28,11 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
     public function getStatus()
     {
         return $this->_status;
+    }
+
+    public function getExpectation()
+    {
+        return $this->_expectation;
     }
     
     abstract protected function _valid(PHPT_Ensure_Policy $policy);
