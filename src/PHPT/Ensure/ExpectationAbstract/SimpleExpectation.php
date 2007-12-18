@@ -3,7 +3,7 @@
 abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT_Ensure_Expectation
 {
     protected $_expectation = null;
-    protected $_message = null;
+    protected $_description = null;
     protected $_status = false;
     
     public function __construct($value = null)
@@ -12,8 +12,8 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
             $this->_expectation = $value;
         }
        
-        if (!empty($this->_message)) {
-            $this->_message = sprintf($this->_message, var_export($value, true));
+        if (!empty($this->_description)) {
+            $this->_description = sprintf($this->_description, var_export($value, true));
         }
     }
     
@@ -24,7 +24,7 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
 
     public function getDescription()
     {
-        return $this->_message;
+        return $this->_description;
     }
 
     public function getStatus()
