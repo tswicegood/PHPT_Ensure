@@ -2,7 +2,7 @@
 <project name="PHPT_Ensure" basedir="." default="make">
     <taskdef classname="phing.tasks.ext.d51PearPkg2Task" name="d51pearpkg2" />
     
-    <property name="version" value="0.1alpha" />
+    <property name="version" value="0.2devel" />
     <property name="package_name" value="PHPT_Ensure" />
     <property name="channel" value="channel.phpt.info" />
     
@@ -62,6 +62,10 @@
                          type="required" />
             </dependencies>
             
+            <changelog version="0.2devel" date="2007-12-17">
+                This contains the working version of PHPT_Ensure
+                as found in the SVN repository.
+            </changelog>
             <changelog version="0.1alpha" date="2007-10-19">
                 This is the initial alpha release of this package
             </changelog>

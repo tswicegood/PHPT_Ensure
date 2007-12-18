@@ -89,6 +89,8 @@ class PHPT_Ensure_Policy
             $this->_passed_arguments[$this->_current_argument] = $arguments;
         } elseif (count($arguments) == 1) {
             $this->_passed_arguments[$this->_current_argument] = array_shift($arguments);
+        } else {
+            $this->_passed_arguments[$this->_current_argument] = null;
         }
     }
 }
