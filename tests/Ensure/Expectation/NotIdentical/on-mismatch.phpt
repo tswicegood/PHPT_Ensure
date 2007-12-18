@@ -9,7 +9,7 @@ $int = rand(100, 200);
 $expectation = new PHPT_Ensure_Expectation_NotIdentical($int);
 $policy = new PHPT_Ensure_Policy($int);
 $expectation->evaluate($policy);
-assert('$expectation->status === false');
+assert('$expectation->getStatus() === false');
 
 ?>
 ===DONE===

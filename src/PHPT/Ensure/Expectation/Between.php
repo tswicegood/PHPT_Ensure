@@ -18,24 +18,17 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
 		$this->_upper = array_shift($value);
 	}
 
-    public function __get($key)
-    {
-        if ($key == 'status') {
-            return $this->_status;
-        }
-    }
-
     public function evaluate(PHPT_Ensure_Policy $policy) 
 	{ 
 		$greaterThanOrEqual = new PHPT_Ensure_Expectation_GreaterThanOrEqual($this->_lower);
         $greaterThanOrEqual->evaluate($policy);
-        if ($greaterThanOrEqual->status === false) {
+        if ($greaterThanOrEqual->getStatus() === false) {
             $this->_status = false;
             return;
 		}
 		$lesserThanOrEqual = new PHPT_Ensure_Expectation_LesserThanOrEqual($this->_upper);
         $lesserThanOrEqual->evaluate($policy);
-		if ($lesserThanOrEqual->status === false) {
+		if ($lesserThanOrEqual->getStatus() === false) {
             $this->_status = false;
 			return;
 		}
@@ -46,6 +39,11 @@ class PHPT_Ensure_Expectation_Between implements PHPT_Ensure_Expectation
     public function getDescription()
     {
         return sprintf('value is expected to be between %d and %d', $this->_lower, $this->_upper);
+    }
+
+    public function getStatus()
+    {
+        return $this->_status;
     }
 
 	private function _violation(PHPT_Ensure_Policy $policy)

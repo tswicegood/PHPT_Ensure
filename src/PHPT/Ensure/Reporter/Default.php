@@ -9,7 +9,7 @@ class PHPT_Ensure_Reporter_Default
 
     public function handle(PHPT_Ensure_Policy $policy, PHPT_Ensure_Expectation $expectation)
     {
-        if ($expectation->status) {
+        if ($expectation->getStatus()) {
             return;
         }
         echo $expectation->getDescription(), "\n",

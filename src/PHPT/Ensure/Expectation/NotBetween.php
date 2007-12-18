@@ -14,13 +14,6 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
 		$this->_upper = array_shift($value);
 	}
 
-    public function __get($key)
-    {
-        if ($key == 'status') {
-            return $this->_status;
-        }
-    }
-
     public function evaluate(PHPT_Ensure_Policy $policy) 
 	{
 		$this->_status = (bool)($this->_lower >= $policy->value || $this->_upper <= $policy->value);
@@ -29,6 +22,11 @@ class PHPT_Ensure_Expectation_NotBetween implements PHPT_Ensure_Expectation
     public function getDescription()
     {
         return sprintf('value is not expected to be between %d and %d', $this->_lower, $this->_upper);
+    }
+
+    public function getStatus()
+    {
+        return $this->_status;
     }
 }
 

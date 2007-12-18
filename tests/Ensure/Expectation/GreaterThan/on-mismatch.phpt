@@ -8,7 +8,7 @@ require_once dirname(__FILE__) . '/_setup.inc';
 $greaterThan = new PHPT_Ensure_Expectation_GreaterThan(100);
 $policy = new PHPT_Ensure_Policy(100);
 $greaterThan->evaluate($policy);
-assert('$greaterThan->status === false');
+assert('$greaterThan->getStatus() === false');
 
 ?>
 ===DONE===

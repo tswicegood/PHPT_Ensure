@@ -13,4 +13,6 @@ interface PHPT_Ensure_Expectation
      *  - value should be between 100 and 200
      */
     public function getDescription();
+
+    public function getStatus();
 }

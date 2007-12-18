@@ -8,11 +8,11 @@ require_once dirname(__FILE__) . '/_setup.inc';
 $expectation = new PHPT_Ensure_Expectation_NotGreaterThanOrEqual(100);
 $policy = new PHPT_Ensure_Policy(100);
 $expectation->evaluate($policy);
-assert('$expectation->status === false');
+assert('$expectation->getStatus() === false');
 
 $policy = new PHPT_Ensure_Policy(101);
 $expectation->evaluate($policy);
-assert('$expectation->status === false');
+assert('$expectation->getStatus() === false');
 
 ?>
 ===DONE===

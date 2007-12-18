@@ -19,6 +19,9 @@ class PHPT_SimpleExpectation implements PHPT_Ensure_Expectation
         return __METHOD__ . " was called " . ++$counter . "\n";
     }
     public function getDescription() { }
+    public function getStatus() { 
+        return $this->status;
+    }
 }
 
 class PHPT_Ensure_Handler_Foobar {

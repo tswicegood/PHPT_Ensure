@@ -9,7 +9,7 @@ $policy = new PHPT_Ensure_Policy('foobar');
 $expectation = new PHPT_Ensure_Expectation_NotEquals('foobar');
 
 $expectation->evaluate($policy);
-assert('$expectation->status === false');
+assert('$expectation->getStatus() === false');
 
 ?>
 ===DONE===

@@ -11,7 +11,7 @@ $policy = new PHPT_Ensure_Policy($random);
 $expectation = new PHPT_Ensure_Expectation_Equals($random);
 $expectation->evaluate($policy);
 
-assert('$expectation->status == true');
+assert('$expectation->getStatus() == true');
 
 ?>
 ===DONE===
