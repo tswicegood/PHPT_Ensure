@@ -11,7 +11,7 @@ $values = array(
 );
 
 foreach ($values as $value) {
-    $scalar = new PHPT_Ensure_Expectation_Scalar('scalar');
+    $scalar = new PHPT_Ensure_Expectation_Scalar();
     $scalar->evaluate(new PHPT_Ensure_Policy($value));
     assert('$scalar->getStatus() === false');
 }
