@@ -79,8 +79,10 @@
                   no value was provided
                 * Change expectations to work without having to
                   have one or more argument
-                * Add isTrue() / isNotTrue()
-                * Add isFalse() / isNotFalse()
+                * Add isTrue() / isNotTrue() and aliases to
+                  allow without "is" prefix
+                * Add isFalse() / isNotFalse() and aliases to
+                  allow without "is" prefix
             </changelog>
             --> 
 
