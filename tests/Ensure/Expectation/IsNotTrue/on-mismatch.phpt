@@ -1,5 +1,5 @@
 --TEST--
-getStatus() == true on match
+getStatus() === false on match
 --FILE--
 <?php
 
