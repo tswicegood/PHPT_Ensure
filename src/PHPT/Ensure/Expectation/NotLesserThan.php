@@ -4,8 +4,8 @@ class PHPT_Ensure_Expectation_NotLesserThan extends PHPT_Ensure_Expectation_Less
 {
     protected $_description = 'value is not expected to be lesser than %d';
 
-    protected function _valid(PHPT_Ensure_Policy $policy)
+    protected function _isValid(PHPT_Ensure_Policy $policy)
     {
-        return !parent::_valid($policy);
+        return !parent::_isValid($policy);
     }
 }

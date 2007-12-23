@@ -9,7 +9,7 @@ class PHPT_Ensure_Expectation_LesserThanOrEqual extends PHPT_Ensure_ExpectationA
      *           >= comparison operator.  The current method was chosen to show how existing
      *           Expectations can be used to build more complex Expectations.
      */
-    protected function _valid(PHPT_Ensure_Policy $policy)
+    protected function _isValid(PHPT_Ensure_Policy $policy)
     {
         static $expectations = array(
             'PHPT_Ensure_Expectation_LesserThan',

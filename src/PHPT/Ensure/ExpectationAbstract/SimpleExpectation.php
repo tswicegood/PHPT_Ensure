@@ -19,7 +19,7 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
     
     public function evaluate(PHPT_Ensure_Policy $policy)
     {
-        $this->_status = $this->_valid($policy);
+        $this->_status = $this->_isValid($policy);
     }
 
     public function getDescription()
@@ -37,6 +37,6 @@ abstract class PHPT_Ensure_ExpectationAbstract_SimpleExpectation implements PHPT
         return $this->_expectation;
     }
     
-    abstract protected function _valid(PHPT_Ensure_Policy $policy);
+    abstract protected function _isValid(PHPT_Ensure_Policy $policy);
 
 }
