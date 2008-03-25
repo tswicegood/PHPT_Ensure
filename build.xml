@@ -2,7 +2,7 @@
 <project name="PHPT_Ensure" basedir="." default="make">
     <taskdef classname="phing.tasks.ext.d51PearPkg2Task" name="d51pearpkg2" />
     
-    <property name="version" value="0.2devel" />
+    <property name="version" value="0.1.1alpha" />
     <property name="package_name" value="PHPT_Ensure" />
     <property name="channel" value="channel.phpt.info" />
     
@@ -31,6 +31,31 @@
     </target>
     
     <target name="build" depends="export">
+        <phingcall target="build.package" />
+    </target>
+
+    <target name="export.git" depends="clean">
+        <echo msg="Creating copy of git contents" />
+         <copy todir="./build/package">
+            <filterchain>
+                <replacetokens begintoken="@@" endtoken="@@">
+                    <token key="VERSION" value="${version}" />
+                </replacetokens>
+            </filterchain>
+            <fileset dir="./src">
+                <include name="PHPT*/**" />
+            </fileset>
+            <fileset dir="./">
+                <include name="scripts/**" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="build.git" depends="export.git">
+        <phingcall target="build.package" />
+    </target>
+
+    <target name="build.package">
         <d51pearpkg2 dir="./build/package" baseinstalldir="/">
             <name>${package_name}</name>
             <summary>PHPT_Ensure provides the ensure() function for testing expectations</summary>
@@ -62,8 +87,7 @@
                          type="required" />
             </dependencies>
             
-            <!-- working changelog for 0.2alpha
-            <changelog version="0.2alpha date="YYYY-MM-DD">
+            <changelog version="0.1.1alpha" date="2008-03-25">
                 <!--        Don't exceed this width         -->
                 The second alpha release of PHPT_Ensure.  The
                 following changes were made:
@@ -84,19 +108,22 @@
                 * Add isFalse() / isNotFalse() and aliases to
                   allow without "is" prefix
             </changelog>
-            --> 
 
-            <changelog version="0.2devel" date="2007-12-17">
-                This contains the working version of PHPT_Ensure
-                as found in the SVN repository.
-            </changelog>
             <changelog version="0.1alpha" date="2007-10-19">
                 This is the initial alpha release of this package
             </changelog>
         </d51pearpkg2>
     </target>
     
-    <target name="make" depends="build">
+     <target name="make" depends="build">
+        <phingcall target="make.package" />
+    </target>
+
+    <target name="make.git" depends="build.git">
+        <phingcall target="make.package" />
+    </target>
+
+    <target name="make.package">
         <echo msg="Creating PEAR archive file for ${package_name}" />
         <mkdir dir="./build/package/${package_name}-${version}" />
         <copy todir="./build/package/${package_name}-${version}">
